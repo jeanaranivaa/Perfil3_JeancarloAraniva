@@ -4,25 +4,38 @@
     "slug": "practica-apk",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/masterball.png",
+    "userInterfaceStyle": "dark",
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+        "backgroundColor": "#0D0F1F",
+        "foregroundImage": "./assets/masterball.png"
+      },
+      "package": "com.jeanaraniva.practicaapk"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/masterball.png"
     },
     "plugins": [
       "expo-font",
-      "expo-status-bar"
-    ]
+      "expo-status-bar",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/masterball.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#0D0F1F"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e1715bea-09c0-4971-8687-422da49a2072"
+      }
+    }
   }
 }

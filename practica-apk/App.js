@@ -2,8 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigator from './src/navigation/AppNavigator';
-import Loader from './src/components/Loader';
+import AppSplash from './src/components/AppSplash';
 import { useAppFonts } from './src/hooks/useAppFonts';
+import { useSplash } from './src/hooks/useSplash';
 import { colors } from './src/theme/theme';
 
 const navTheme = {
@@ -13,9 +14,19 @@ const navTheme = {
 
 export default function App() {
   const fontsReady = useAppFonts();
+  const { showSplash } = useSplash(fontsReady);
 
-  // Mientras carga Poppins mostramos solo el indicador (sin texto)
-  if (!fontsReady) return <Loader small />;
+  // Mientras cargan las fuentes sigue visible el splash nativo
+  if (!fontsReady) return null;
+
+  if (showSplash) {
+    return (
+      <>
+        <StatusBar style="light" />
+        <AppSplash />
+      </>
+    );
+  }
 
   return (
     <SafeAreaProvider>
